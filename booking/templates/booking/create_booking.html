@@ -1,0 +1,25 @@
+<h2>Create Booking</h2>
+<form method="post" action="{% url 'create_booking' %}">
+    {% csrf_token %}
+    <label for="movie">Select Movie:</label>
+    <select name="movie">
+        {% for movie in movies %}
+            <option value="{{ movie.id }}">{{ movie.title }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label for="theater">Select Theater:</label>
+    <select name="theater">
+        {% for theater in theaters %}
+            <option value="{{ theater.id }}">{{ theater.name }} - {{ theater.location }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label for="user_name">Your Name:</label>
+    <input type="text" name="user_name"><br>
+
+    <label for="num_tickets">Number of Tickets:</label>
+    <input type="number" name="num_tickets"><br>
+
+    <input type="submit" value="Book Tickets">
+</form>
